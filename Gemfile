@@ -9,10 +9,10 @@ group :assets do
 end
 gem 'jquery-rails'
 
-# Required to give an executable JS environment 
+# Required to give an executable JS environment
 # in Production on Heroku
 group :production do
-  gem 'therubyracer-heroku', '0.8.1.pre3'
+  gem 'therubyracer', '0.9.9'
 end
 
 # Development / Test only.
@@ -24,8 +24,8 @@ group :test do
   gem 'turn', :require => false
 end
 
-# Squish Application Dependancies
-gem "couchbase-ruby-client", :require => "couchbase"
+# Squish Application Dependencies
+gem "couchbase", :git => "git://github.com/avsej/couchbase-ruby-client.git"
 gem "validate_url"
 
 

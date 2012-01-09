@@ -12,7 +12,7 @@ module Couch
     end
 
     def client
-      @client ||= Couchbase.new "#{domain}:8091/pools/default"
+      @client ||= Couchbase.new "#{domain}:8091/pools/default", :quiet => false
     end
 
   end
