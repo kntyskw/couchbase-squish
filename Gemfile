@@ -25,7 +25,7 @@ group :test do
 end
 
 # Squish Application Dependencies
-gem "couchbase", :git => "git://github.com/avsej/couchbase-ruby-client.git"
+gem "couchbase"
 gem "validate_url"
 
 

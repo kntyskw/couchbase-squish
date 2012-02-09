@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/avsej/couchbase-ruby-client.git
-  revision: 4d260ab1c0064cd699a7495525560ac4c73956f7
-  specs:
-    couchbase (1.0.0)
-      yajl-ruby (~> 1.1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -49,6 +42,8 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     columnize (0.3.6)
+    couchbase (1.0.0)
+      yajl-ruby (~> 1.1.0)
     erubis (2.7.0)
     execjs (1.2.13)
       multi_json (~> 1.0)
@@ -137,7 +132,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.0)
-  couchbase!
+  couchbase
   foreman
   jquery-rails
   rails (= 3.1.0)
