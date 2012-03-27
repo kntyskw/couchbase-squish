@@ -42,8 +42,11 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     columnize (0.3.6)
-    couchbase (1.0.0)
+    couchbase (1.2.0.dp)
+      yaji (~> 0.2.1)
       yajl-ruby (~> 1.1.0)
+    couchbase-model (0.1.0)
+      couchbase (~> 1.2.0.dp)
     erubis (2.7.0)
     execjs (1.2.13)
       multi_json (~> 1.0)
@@ -125,6 +128,7 @@ GEM
       multi_json (>= 1.0.2)
     validate_url (0.2.0)
       activemodel (>= 3.0.0)
+    yaji (0.2.2)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -132,7 +136,8 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.0)
-  couchbase
+  couchbase (~> 1.2.0.dp)
+  couchbase-model (~> 0.1.0)
   foreman
   jquery-rails
   rails (= 3.1.0)

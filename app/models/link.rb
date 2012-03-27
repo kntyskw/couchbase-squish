@@ -1,67 +1,39 @@
-class Link
+class Link < Couchbase::Model
 
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Callbacks
   extend ActiveModel::Naming
 
-  attr_accessor :url, :key, :views, :session_id, :created_at
+  attribute :url, :views, :session_id, :created_at
+  attribute :views, :default => 0
+  attribute :created_at, :default => lambda { Time.zone.now }
 
   define_model_callbacks :save
   validates :url, :presence => true, :url => {:allow_nil => true, :message => "This is not a valid URL"}
   before_save :generate_key
 
   def generate_key
-    while self.key.nil?
+    while self.id.nil?
       random = SecureRandom.hex(2)
-      self.key = random if self.class.find(random).nil?
+      self.id = random if self.class.find_by_id(random).nil?
     end
-  end
-
-  # ActiveModel
-
-  def initialize(attributes = {})
-    @errors = ActiveModel::Errors.new(self)
-    attributes.each do |name, value|
-      setter = "#{name}="
-      next unless respond_to?(setter)
-      send(setter, value)
-    end
-    self.views ||= 0
-    self.created_at ||= Time.zone.now
   end
 
   def to_param
-    self.key
+    self.id
   end
 
   def persisted?
-    return false unless (key && valid?)
+    return false if new? || !valid?
     # TODO need a better way to track if an object is *dirty* or not...
-    self.class.find(key).url == self.url
+    self.class.find_by_id(key).url == self.url
   end
 
   def save
     return false unless valid?
     run_callbacks :save do
-      Couch.client.set(self.key, {
-        :type => self.class.to_s.downcase,
-        :url => self.url,
-        :key => self.key,
-        :views => self.views,
-        :session_id => self.session_id,
-        :created_at => self.created_at
-      })
-    end
-  end
-
-  def self.find(key)
-    return nil unless key
-    begin
-      doc = Couch.client.get(key)
-      self.new(doc)
-    rescue Couchbase::Error::NotFound => e
-      nil
+      super
     end
   end
 
