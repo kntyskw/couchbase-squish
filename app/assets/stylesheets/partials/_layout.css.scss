@@ -127,6 +127,9 @@ hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px
       position: relative;
       left: -3px;
       @include border-radius (0px 3px 3px 0px);
+      &:hover{
+        opacity: 0.9;
+      }
     }
 }
 
@@ -264,6 +267,9 @@ hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px
     background: $sqsh-blue;
     color: $sqsh-white;
     float:left;
+    &:hover{
+      opacity: 0.9;
+    }
   }
   input[type="text"] {
     margin:0;
