@@ -9,6 +9,8 @@ class Link < Couchbase::Model
   attribute :views, :default => 0
   attribute :created_at, :default => lambda { Time.zone.now }
 
+  view :by_created_at, :by_session_id, :by_view_count
+
   define_model_callbacks :save
   validates :url, :presence => true, :url => {:allow_nil => true, :message => "This is not a valid URL"}
   before_save :generate_key
