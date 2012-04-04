@@ -30,4 +30,23 @@ class LinksController < ApplicationController
   def new
     @link = Link.new
   end
+
+  def my
+    @filter = "my_links"
+    @filtered_links = Link.my(session[:session_id])
+    @link = Link.new
+  end
+
+  def recent
+    @filter = "recent"
+    @filtered_links = Link.recent
+    @link = Link.new
+  end
+
+  def popular
+    @filter = "popular"
+    @filtered_links = Link.popular
+    @link = Link.new
+  end
+
 end

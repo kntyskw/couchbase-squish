@@ -39,4 +39,16 @@ class Link < Couchbase::Model
     end
   end
 
+  def self.popular
+    by_view_count(:descending => true).to_a
+  end
+
+  def self.my(session_id)
+    by_session_id(:key => session_id).to_a
+  end
+
+  def self.recent
+    by_created_at(:descending => true).to_a
+  end
+
 end
