@@ -23,6 +23,9 @@ end
 group :test do
   gem 'turn', :require => false
 end
+group :development do
+  gem 'thin'
+end
 
 # Squish Application Dependencies
 gem "couchbase", "~> 1.2.0.dp"
