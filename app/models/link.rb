@@ -5,6 +5,7 @@ class Link < Couchbase::Model
   extend ActiveModel::Callbacks
   extend ActiveModel::Naming
 
+  attribute :url, :session_id
   attribute :views, :default => 0
   attribute :created_at, :default => lambda { Time.zone.now }
 
