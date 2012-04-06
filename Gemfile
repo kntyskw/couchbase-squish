@@ -17,7 +17,8 @@ end
 
 # Development / Test only.
 group :development, :test do
-  gem 'ruby-debug'
+  gem 'ruby-debug19', :platforms => :ruby_19
+  gem 'ruby-debug', :platforms => :ruby_18
   gem 'foreman'
 end
 group :test do
