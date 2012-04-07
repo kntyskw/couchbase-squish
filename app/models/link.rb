@@ -40,7 +40,7 @@ class Link < Couchbase::Model
   end
 
   def self.popular
-    by_view_count(:descending => true).to_a
+    by_view_count(:descending => true, :limit => 10).to_a
   end
 
   def self.my(session_id)
@@ -48,7 +48,7 @@ class Link < Couchbase::Model
   end
 
   def self.recent
-    by_created_at(:descending => true).to_a
+    by_created_at(:descending => true, :limit => 10).to_a
   end
 
 end
