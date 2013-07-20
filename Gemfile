@@ -29,8 +29,8 @@ group :development do
 end
 
 # Squish Application Dependencies
-gem "couchbase", "~> 1.2.0.dp"
-gem "couchbase-model", "~> 0.1.0"
+gem "couchbase"
+gem "couchbase-model"
 gem "validate_url"
 
 
